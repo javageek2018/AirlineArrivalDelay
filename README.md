@@ -43,7 +43,6 @@
 
 - **Type casting**: standardized all numeric columns to `double` for `VectorAssembler` compatibility.
 - **Null handling**: replaced sentinel/null values with sensible defaults (e.g., zero for missing precipitation, global mean for missing delay rates).
-- **Deduplication**: removed duplicate flight records via composite keys (`FlightDate`, `Reporting_Airline`, `Flight_Number`, `Origin`, `Dest`).
 - **Filter**: dropped rows with null target (`ArrDel15`) or missing scheduled times.
 - **Leakage audit**: confirmed no post-departure features (e.g., actual `DepTime`) were included.
 
@@ -64,7 +63,7 @@
 
 ### 7. Stratified Sampling for Training Efficiency
 
-- Training data sampled at **~10% per (Year × Month × ArrDel15)** stratum to fit memory constraints while **preserving seasonality and class balance**.
+- Training data sampled at **~20% per (Year × Month × ArrDel15)** stratum to fit memory constraints while **preserving seasonality and class balance**.
 - Validation similarly sampled (~15%) for fast early-stopping evaluation; **test set kept fully intact** for honest final metrics.
 
 ---
