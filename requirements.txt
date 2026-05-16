@@ -1,4 +1,5 @@
-pyspark==4.0.2
+pyspark==3.5.3
+holidays
 pandas
 numpy
 matplotlib
