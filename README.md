@@ -34,13 +34,12 @@ Which machine learning models remain robust at predicting U.S. domestic flight a
 ```
 AirlineArrivalDelay/
 ├── notebooks/
-│   ├── 01_data_pipeline.ipynb        # BTS + weather ingestion, cleaning, feature engineering, parquet output
-│   ├── 02_eda_temporal.ipynb         # Time-series EDA, STL decomposition, COVID annotation, rolling trends
-│   ├── 03_eda_categorical.ipynb      # Airline, airport, distance group analysis, cardinality review
-│   ├── 04_feature_engineering.ipynb  # Target encoding, rolling delay rates, temporal split
-│   ├── 05_logistic_regression.ipynb  # Baseline logistic regression model
-│   ├── 06_random_forest.ipynb        # Random Forest model (PySpark MLlib)
-│   └── 07_gradient_boosting.ipynb    # XGBoost model (SparkXGBClassifier)
+│   ├── 01_pipeline.ipynb             # BTS download, weather join (T-2h), holiday flags, Spark temporal split → parquet
+│   ├── 02_eda.ipynb                  # Temporal EDA (STL, rolling trends, COVID annotation) + categorical EDA (airline, airport, route)
+│   ├── 03_feature_engineering.ipynb  # Rolling delay rates (30d/90d), target encoding, temporal split export
+│   ├── 04_logistic_regression.ipynb  # Baseline logistic regression model (PySpark MLlib)
+│   ├── 05_random_forest.ipynb        # Random Forest model (PySpark MLlib, 100 trees, depth 12, threshold 0.30)
+│   └── 06_gradient_boosting.ipynb    # XGBoost model (SparkXGBClassifier)
 ├── results/                          # EDA figures and model output plots
 ├── docs/                             # Presentations and writeups
 ├── data/                             # Gitignored — parquet files (train/val/test)
@@ -81,11 +80,11 @@ AirlineArrivalDelay/
 
 ## Models
 
-| Model | Framework | Key Config |
-|-------|-----------|-----------|
-| Logistic Regression | PySpark MLlib | Baseline, class-balanced |
-| Random Forest | PySpark MLlib | 100 trees, depth 12, threshold 0.30 |
-| Gradient Boosting | SparkXGBClassifier | 3000 rounds, depth 10, lr 0.03, early stopping |
+| Notebook | Model | Framework | Key Config |
+|----------|-------|-----------|-----------|
+| `04_logistic_regression.ipynb` | Logistic Regression | PySpark MLlib | Baseline, class-balanced |
+| `05_random_forest.ipynb` | Random Forest | PySpark MLlib | 100 trees, depth 12, threshold 0.30 |
+| `06_gradient_boosting.ipynb` | Gradient Boosting | SparkXGBClassifier | 3000 rounds, depth 10, lr 0.03, early stopping |
 
 ---
 
@@ -94,7 +93,7 @@ AirlineArrivalDelay/
 | Model | Val ROC-AUC | Test PR-AUC | Test Recall | Test F1 |
 |-------|------------|------------|------------|--------|
 | Logistic Regression | — | — | — | — |
-| Random Forest | — | — | — | — |
+| Random Forest | 0.6910 | 0.3813 | 0.9278 | 0.3764 |
 | Gradient Boosting | — | — | — | — |
 
 ---
@@ -109,9 +108,9 @@ pip install -r requirements.txt
 jupyter lab
 ```
 
-Run notebooks **01 → 07** sequentially. `01_data_pipeline.ipynb` must be run first to generate the parquet files in `data/`.
+Run notebooks **01 → 06** sequentially. `01_pipeline.ipynb` must be run first to generate the parquet files in `data/`.
 
-> Note: Model notebooks (05–07) require Apache Spark and were developed on Google Colab with 35GB driver memory.
+> Note: Model notebooks (04–06) require Apache Spark and were developed on Google Colab with 35GB driver memory.
 
 ---
 
