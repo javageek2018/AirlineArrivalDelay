@@ -93,11 +93,9 @@ AirlineArrivalDelay/
 
 | Model | Val ROC-AUC | Test PR-AUC | Test Recall | Test F1 |
 |-------|------------|------------|------------|--------|
-| Logistic Regression | 0.6767 | 0.3559 | — | 0.4071 |
-| Random Forest | 0.6910 | 0.3805 | — | — |
-| Gradient Boosting | 0.7133 | 0.4108 | 0.5739 | 0.4393 |
-
-> Test set results for Random Forest are pending final evaluation run.
+| Logistic Regression | — | — | — | — |
+| Random Forest | — | — | — | — |
+| Gradient Boosting | — | — | — | — |
 
 ---
 
