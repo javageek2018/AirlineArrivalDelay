@@ -99,17 +99,16 @@ AirlineArrivalDelay/
 
 ## How to Run
 
-```bash
-# Install dependencies
-pip install -r requirements.txt
+All notebooks were developed and run on **Google Colab Pro** with a high-RAM runtime (35GB+). Local execution is not recommended due to dataset size (~45M rows).
 
-# Run notebooks in order
-jupyter lab
-```
-
-Run notebooks **01 → 06** sequentially. `01_pipeline.ipynb` must be run first to generate the parquet files in `data/`.
-
-> Note: Model notebooks (04–06) require Apache Spark and were developed on Google Colab with 35GB driver memory.
+1. Upload the notebook to Google Colab (or open via GitHub)
+2. Select a high-RAM runtime: `Runtime > Change runtime type > High-RAM`
+3. Install non-default dependencies at the top of the notebook:
+   ```python
+   !pip install holidays pyspark
+   ```
+4. Run notebooks **01 → 06** sequentially — `01_pipeline.ipynb` must be run first to generate the parquet files in `data/`
+5. Mount Google Drive or adjust file paths to point to your parquet data location
 
 ---
 
