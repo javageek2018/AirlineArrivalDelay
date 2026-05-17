@@ -8,6 +8,9 @@ flights_split/
 .virtual_documents/
 _ts_extracted/
 
+# Generated figures (saved to docs/ instead)
+notebooks/*.png
+
 # OS / temp files
 .DS_Store
 ~$*.docx
