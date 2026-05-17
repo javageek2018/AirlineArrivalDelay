@@ -17,7 +17,7 @@ Which machine learning models remain robust at predicting U.S. domestic flight a
 | **BTS On-Time Performance** | ~45M domestic flights, 2018–2024 |
 | **Iowa Mesonet ASOS Weather** | Hourly weather at origin & destination airports, joined at T-2 hours before scheduled departure |
 
-**Target:** `ArrDel15` = 1 when arrival is ≥ 15 minutes late (~20% positive rate)
+**Target:** `ArrDel15` = 1 when arrival is ≥ 15 minutes late (~18.3% positive rate)
 
 **Temporal Split:**
 
