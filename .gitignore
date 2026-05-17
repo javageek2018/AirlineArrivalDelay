@@ -1,0 +1,19 @@
+# Data — too large for git
+data/
+flights_encoded/
+flights_split/
+
+# Jupyter
+.ipynb_checkpoints/
+.virtual_documents/
+_ts_extracted/
+
+# OS / temp files
+.DS_Store
+~$*.docx
+~$*.xlsx
+
+# Scratch notebooks (not part of numbered pipeline)
+EDA_new.ipynb
+RandomForest_Ray.ipynb
+RandomForest_Spark_Ray.ipynb

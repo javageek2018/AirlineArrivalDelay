@@ -40,8 +40,7 @@ AirlineArrivalDelay/
 │   ├── 04_logistic_regression.ipynb  # Baseline logistic regression model (PySpark MLlib)
 │   ├── 05_random_forest.ipynb        # Random Forest model (PySpark MLlib, 100 trees, depth 12, threshold 0.30)
 │   └── 06_gradient_boosting.ipynb    # XGBoost model (SparkXGBClassifier)
-├── results/                          # EDA figures and model output plots
-├── docs/                             # Presentations and writeups
+├── docs/                             # EDA figures, model output plots, and writeups
 ├── data/                             # Gitignored — parquet files (train/val/test)
 ├── requirements.txt
 └── README.md
