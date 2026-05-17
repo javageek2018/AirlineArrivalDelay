@@ -89,11 +89,11 @@ AirlineArrivalDelay/
 
 ## Results
 
-| Model | Val ROC-AUC | Test PR-AUC | Test Recall | Test F1 |
-|-------|------------|------------|------------|--------|
-| Logistic Regression | — | — | — | — |
-| Random Forest | 0.6910 | 0.3813 | 0.9278 | 0.3764 |
-| Gradient Boosting | — | — | — | — |
+| Model | Val ROC-AUC | Test PR-AUC | ΔPR-AUC | Test Recall | Test F1 | Monthly Stability (F1) |
+|-------|------------|------------|---------|------------|--------|----------------------|
+| Logistic Regression | 0.6766 | 0.3558 | −0.0025 | 0.5469 | 0.4071 | Mean 0.3791 ± 0.0868 |
+| Random Forest | 0.6910 | 0.3813 | +0.0008 | 0.9278 | 0.3764 | Mean 0.3681 ± 0.0662 |
+| XGBoost | Val 0.7133 / Test 0.7099 | 0.4108 | +0.0006 | 0.5739 | 0.4393 | Mean 0.4137 ± 0.0800 |
 
 ---
 
