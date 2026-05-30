@@ -221,7 +221,7 @@ together accounting for ~32% of total feature importance.
 | Metric | Value | Notes |
 |---|---|---|
 | ROC-AUC | 0.6910 | Threshold-independent ranking quality |
-| PR-AUC | 0.3805 | ~2.13× lift over random baseline |
+| PR-AUC | 0.3805 | ~1.85× lift over random baseline |
 | Delayed Precision | 0.3377 | Of flagged delays, % actually delayed |
 | Delayed Recall | 0.5584 | Of actual delays, % caught |
 | On-Time Precision | 0.8624 | Of flagged on-time, % actually on-time |
