@@ -1,9 +1,0 @@
-pyspark==3.5.3
-holidays
-pandas
-numpy
-matplotlib
-seaborn
-scikit-learn
-pyarrow
-requests
