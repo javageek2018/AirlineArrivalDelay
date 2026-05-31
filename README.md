@@ -33,6 +33,11 @@ Which machine learning models remain robust at predicting U.S. domestic flight a
 
 ```
 AirlineArrivalDelay/
+├── docs/
+│   ├── Data.md                       # Data card (source, schema, splits, license)
+│   ├── LogisticRegression.md         # Model card — logistic regression
+│   ├── RandomForest.md               # Model card — random forest
+│   └── XGBoost.md                    # Model card — XGBoost
 ├── notebooks/
 │   ├── 01_pipeline.ipynb             # BTS download, weather join (T-2h), holiday flags, Spark temporal split → parquet
 │   ├── 02_eda.ipynb                  # Temporal EDA (STL, rolling trends, COVID annotation) + categorical EDA (airline, airport, route)
