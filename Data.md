@@ -376,13 +376,13 @@ Same structure as origin, prefixed `dest_*`
 ### How is the data distributed?
 
 - **Format**: Apache Parquet (compressed, columnar)
-- **Storage**: [DBFS / S3 / local path]
+- **Storage**: https://zenodo.org/record/20469826
 - **Structure**:
 
       /data/processed/
-        ├── train.parquet/   2018-2022 stratified sample
-        ├── val.parquet/     2023 stratified sample
-        └── test.parquet/    2024 full
+        ├── train.parquet    2018-2022 stratified sample
+        ├── val.parquet      2023 stratified sample
+        └── test.parquet     2024 full
 
 - **Partitioning**: By `Year` and `Month` for efficient filtering
 - **Compression**: Snappy (default Parquet)
@@ -390,7 +390,9 @@ Same structure as origin, prefixed `dest_*`
 
 ### How can users access it?
 
-[Describe access — e.g., Databricks DBFS, S3 bucket URL, request process]
+Download from Zenodo: https://zenodo.org/record/20469826 — three parquet files
+(`train.parquet`, `val.parquet`, `test.parquet`). Use notebook `04_download_data.ipynb`
+to download directly to Google Drive for use in model notebooks.
 
 ### License
 
@@ -507,4 +509,5 @@ etc.) since flights are not associated with individuals. However:
 
 ## Acknowledgments
 
-[Team members, advisors, data providers, funding sources]
+- **Team**: Angela Watson, Cameron Hensley, Sripriya Panchapakesan — UCSD MDS DSC 288R Capstone (Group 5)
+- **Data providers**: U.S. Bureau of Transportation Statistics (BTS), Iowa Environmental Mesonet ASOS Network (Iowa State University)
