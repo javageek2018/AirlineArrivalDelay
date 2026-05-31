@@ -109,7 +109,7 @@ All notebooks were developed and run on **Google Colab Pro** with a high-RAM run
 
 ### Steps
 
-> **Note:** Notebooks `01_pipeline.ipynb`, `02_eda.ipynb`, and `03_feature_engineering.ipynb` are for rebuilding the dataset from raw BTS and NOAA sources. The processed train/val/test splits are already available on Zenodo (DOI: `10.5281/zenodo.20469826`) — you do not need to run 01–03 to reproduce the model results.
+> **Note:** Notebooks `01_pipeline.ipynb`, `02_eda.ipynb`, and `03_feature_engineering.ipynb` are for rebuilding the dataset from raw BTS and NOAA sources. The processed train/val/test splits are already available on Zenodo (https://zenodo.org/record/20469826) — you do not need to run 01–03 to reproduce the model results.
 
 1. **Download the data (one time only)**
    - Open `04_download_data.ipynb` in Google Colab
