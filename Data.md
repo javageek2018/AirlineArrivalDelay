@@ -71,7 +71,7 @@ including:
 
 | Split | Years | Raw Rows | Sampled Rows |
 |---|---|---|---|
-| Train | 2018 – 2022 | ~31.1M | ~3.1M (10% stratified) |
+| Train | 2018 – 2022 | ~31.1M | ~6.2M (20% stratified) |
 | Validation | 2023 | ~6.7M | ~1M (15% stratified) |
 | Test | 2024 | ~6.9M | ~6.9M (unsampled) |
 
@@ -403,22 +403,12 @@ None
 
 ---
 
-## Maintenance
-
-### Who maintains this dataset?
-
-[Team name and contact]
-
 ### Update cadence
 
 - **Annual**: Add new full year of flight data once available from BTS
 - **As needed**: Update ASOS weather data if new stations come online
 - **Quarterly**: Refresh historical delay-rate statistics if used in
   production scoring
-
-### How will errors be communicated?
-
-[Email list, GitHub issues, internal Slack channel]
 
 ### Versioning policy
 
