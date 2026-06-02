@@ -1,5 +1,6 @@
 # Data — too large for git
-data/
+data/*
+!data/.gitkeep
 flights_encoded/
 flights_split/
 
