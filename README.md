@@ -33,19 +33,19 @@ Which machine learning models remain robust at predicting U.S. domestic flight a
 
 ```
 AirlineArrivalDelay/
+├── data/                             # Local data directory (gitignored — populated by notebook 01)
 ├── docs/
 │   ├── Data.md                       # Data card (source, schema, splits, license)
 │   ├── LogisticRegression.md         # Model card — logistic regression
 │   ├── RandomForest.md               # Model card — random forest
 │   └── XGBoost.md                    # Model card — XGBoost
 ├── notebooks/
-│   ├── 01_pipeline.ipynb             # BTS download, weather join (T-2h), holiday flags, Spark temporal split → parquet
+│   ├── 01_pipeline.ipynb             # BTS download, weather join (T-2h), holiday flags → parquet
 │   ├── 02_eda.ipynb                  # Temporal EDA (STL, rolling trends, COVID annotation) + categorical EDA (airline, airport, route)
-│   ├── 03_feature_engineering.ipynb  # Rolling delay rates (30d/90d), target encoding, temporal split export
-│   ├── 04_download_data.ipynb        # One-time download of train/val/test parquet files from Zenodo to Google Drive
-│   ├── 05_logistic_regression.ipynb  # Baseline logistic regression model (PySpark MLlib)
-│   ├── 06_random_forest.ipynb        # Random Forest model (PySpark MLlib, 100 trees, depth 12, threshold 0.30)
-│   └── 07_gradient_boosting.ipynb    # XGBoost model (SparkXGBClassifier)
+│   ├── 03_feature_engineering.ipynb  # Rolling delay rates (30d/90d), target encoding, train/val/test split export
+│   ├── 04_logistic_regression.ipynb  # Baseline logistic regression model (PySpark MLlib)
+│   ├── 05_random_forest.ipynb        # Random Forest model (PySpark MLlib, 100 trees, depth 12, threshold 0.30)
+│   └── 06_gradient_boosting.ipynb    # XGBoost model (SparkXGBClassifier)
 └── README.md
 ```
 
@@ -84,9 +84,9 @@ AirlineArrivalDelay/
 
 | Notebook | Model | Framework | Key Config |
 |----------|-------|-----------|-----------|
-| `05_logistic_regression.ipynb` | Logistic Regression | PySpark MLlib | Baseline, class-balanced |
-| `06_random_forest.ipynb` | Random Forest | PySpark MLlib | 100 trees, depth 12, threshold 0.30 |
-| `07_gradient_boosting.ipynb` | Gradient Boosting | SparkXGBClassifier | 3000 rounds, depth 10, lr 0.03, early stopping |
+| `04_logistic_regression.ipynb` | Logistic Regression | PySpark MLlib | Baseline, class-balanced |
+| `05_random_forest.ipynb` | Random Forest | PySpark MLlib | 100 trees, depth 12, threshold 0.30 |
+| `06_gradient_boosting.ipynb` | Gradient Boosting | SparkXGBClassifier | 3000 rounds, depth 10, lr 0.03, early stopping |
 
 ---
 
@@ -102,29 +102,44 @@ AirlineArrivalDelay/
 
 ## How to Run
 
-All notebooks were developed and run on **Google Colab Pro** with a high-RAM runtime (35GB+). Local execution is not recommended due to dataset size.
-
 ### Runtime Requirements
 
-| Notebook | Runtime Type |
-|----------|-------------|
-| `05_logistic_regression.ipynb` | High-RAM CPU |
-| `06_random_forest.ipynb` | High-RAM CPU |
-| `07_gradient_boosting.ipynb` | High-RAM CPU + GPU |
+| Notebook | Where to Run | Runtime |
+|----------|-------------|---------|
+| `01_pipeline.ipynb` | Local (Jupyter) | Standard CPU |
+| `02_eda.ipynb` | Google Colab | Standard CPU |
+| `03_feature_engineering.ipynb` | Google Colab Pro | High-RAM CPU |
+| `04_logistic_regression.ipynb` | Google Colab Pro | High-RAM CPU |
+| `05_random_forest.ipynb` | Google Colab Pro | High-RAM CPU |
+| `06_gradient_boosting.ipynb` | Google Colab Pro | High-RAM CPU + GPU |
 
-### Steps
+### Rebuilding the Dataset (Notebooks 01–03)
 
-> **Note:** Notebooks `01_pipeline.ipynb`, `02_eda.ipynb`, and `03_feature_engineering.ipynb` are for rebuilding the dataset from raw BTS and NOAA sources. The processed train/val/test splits are already available on Zenodo (https://zenodo.org/record/20469826) — you do not need to run 01–03 to reproduce the model results.
+> **Note:** The processed train/val/test splits and the pipeline output are available on Zenodo — you do not need to run 01–03 to reproduce the model results.
+> - Pipeline output (`bts_with_weather_holiday.parquet`): https://zenodo.org/records/20489802
+> - Final splits (`train.parquet`, `val.parquet`, `test.parquet`): https://zenodo.org/records/20489802
 
-1. **Download the data (one time only)**
-   - Open `04_download_data.ipynb` in Google Colab
-   - Select a standard CPU runtime
-   - Run all cells — this downloads `train.parquet`, `val.parquet`, `test.parquet` from Zenodo into `/content/drive/MyDrive/flight_data/` on your Google Drive
+1. **Notebook 01 — Data Pipeline** (run locally)
+   - Creates a `data/` folder in the project root automatically
+   - Downloads BTS flight data (2018–2024) and NOAA weather observations
+   - Joins weather at T-2 hours before departure and adds holiday flags
+   - Output: `data/bts_with_weather_holiday.parquet`
+   - Intermediate files are deleted automatically after the final output is saved
 
-2. **Run the model notebooks**
-   - Open `05_logistic_regression.ipynb`, `06_random_forest.ipynb`, or `07_gradient_boosting.ipynb` in Google Colab
-   - Select the appropriate runtime (see table above)
-   - Run all cells top to bottom — each notebook mounts Drive and reads from `flight_data/` automatically
+2. **Notebook 02 — EDA** (Google Colab)
+   - Auto-downloads `bts_with_weather_holiday.parquet` from Zenodo if not on Drive
+   - Exploratory analysis only — no outputs saved
+
+3. **Notebook 03 — Feature Engineering** (Google Colab Pro)
+   - Auto-downloads `bts_with_weather_holiday.parquet` from Zenodo if not on Drive
+   - Computes rolling delay rates and target encoding
+   - Output: `train.parquet`, `val.parquet`, `test.parquet` saved to `flight_data/` on Google Drive
+
+### Running the Model Notebooks (Notebooks 04–06)
+
+- Open the notebook in Google Colab Pro and select the appropriate runtime
+- Each notebook auto-downloads train/val/test from Zenodo if not already on Drive
+- Run all cells top to bottom
 
 ---
 
