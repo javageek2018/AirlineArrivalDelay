@@ -376,7 +376,7 @@ Same structure as origin, prefixed `dest_*`
 ### How is the data distributed?
 
 - **Format**: Apache Parquet (compressed, columnar)
-- **Storage**: https://zenodo.org/record/20469826
+- **Storage**: https://zenodo.org/records/20489802
 - **Structure**:
 
       /data/processed/
@@ -390,9 +390,9 @@ Same structure as origin, prefixed `dest_*`
 
 ### How can users access it?
 
-Download from Zenodo: https://zenodo.org/record/20469826 — three parquet files
-(`train.parquet`, `val.parquet`, `test.parquet`). Use notebook `04_download_data.ipynb`
-to download directly to Google Drive for use in model notebooks.
+Download from Zenodo: https://zenodo.org/records/20489802 — parquet files
+(`bts_with_weather_holiday.parquet`, `train.parquet`, `val.parquet`, `test.parquet`).
+Model notebooks auto-download the required files from Zenodo if not already on Drive.
 
 ### License
 
