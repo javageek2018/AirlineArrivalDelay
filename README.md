@@ -123,7 +123,7 @@ AirlineArrivalDelay/
    - Joins weather at T-2 hours before departure and adds holiday flags
    - Output: `data/bts_with_weather_holiday.parquet`
    - Intermediate files are deleted automatically after the final output is saved
-   - Upload `bts_with_weather_holiday.parquet` to Google Drive at `MyDrive/flight_data/` before running notebook 03
+   - Before proceeding, upload `bts_with_weather_holiday.parquet` to Google Drive at `MyDrive/flight_data/`
 
 2. **Notebook 02 — EDA** (Google Colab)
    - Auto-downloads `bts_with_weather_holiday.parquet` from Zenodo if not on Drive
