@@ -379,10 +379,10 @@ Same structure as origin, prefixed `dest_*`
 - **Storage**: https://zenodo.org/records/20489802
 - **Structure**:
 
-      /data/processed/
-        ├── train.parquet    2018-2022 stratified sample
-        ├── val.parquet      2023 stratified sample
-        └── test.parquet     2024 full
+      ├── bts_with_weather_holiday.parquet    full pipeline output (2018–2024)
+      ├── train.parquet                       2018-2022 stratified sample
+      ├── val.parquet                         2023 stratified sample
+      └── test.parquet                        2024 full
 
 - **Partitioning**: By `Year` and `Month` for efficient filtering
 - **Compression**: Snappy (default Parquet)
