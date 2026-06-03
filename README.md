@@ -116,6 +116,8 @@ AirlineArrivalDelay/
 ### Rebuilding the Dataset (Notebooks 01–03)
 
 > **Note:** The processed train/val/test splits and the pipeline output are available on Zenodo — you do not need to run 01–03 to reproduce the model results: https://zenodo.org/records/20489802
+>
+> Notebooks 02 and 03 will automatically download `bts_with_weather_holiday.parquet` from Zenodo if it is not already on Drive. You can skip notebook 01 entirely.
 
 1. **Notebook 01 — Data Pipeline** (run locally)
    - Creates a `data/` folder in the project root automatically
